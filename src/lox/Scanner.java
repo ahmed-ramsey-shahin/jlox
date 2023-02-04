@@ -70,16 +70,36 @@ public class Scanner {
 
         switch (c) {
 
-            case '(': addToken(LEFT_PAREN); break;
-            case ')': addToken(RIGHT_PAREN); break;
-            case '{': addToken(LEFT_BRACE); break;
-            case '}': addToken(RIGHT_BRACE); break;
-            case ',': addToken(COMMA); break;
-            case '.': addToken(DOT); break;
-            case '-': addToken(MINUS); break;
-            case '+': addToken(PLUS); break;
-            case '*': addToken(STAR); break;
-            case ';': addToken(SEMICOLON); break;
+            case '(':
+                addToken(LEFT_PAREN);
+                break;
+            case ')':
+                addToken(RIGHT_PAREN);
+                break;
+            case '{':
+                addToken(LEFT_BRACE);
+                break;
+            case '}':
+                addToken(RIGHT_BRACE);
+                break;
+            case ',':
+                addToken(COMMA);
+                break;
+            case '.':
+                addToken(DOT);
+                break;
+            case '-':
+                addToken(MINUS);
+                break;
+            case '+':
+                addToken(PLUS);
+                break;
+            case '*':
+                addToken(STAR);
+                break;
+            case ';':
+                addToken(SEMICOLON);
+                break;
             case '!':
                 addToken(match('=') ? BANG_EQUAL : BANG);
                 break;
@@ -93,8 +113,10 @@ public class Scanner {
                 addToken(match('=') ? GREATER_EQUAL : GREATER);
                 break;
             case '/':
-                if(match('/'))
-                    while(peek() != '\n' && !isAtEnd()) advance();
+                if (match('/'))
+                    while (peek() != '\n' && !isAtEnd()) advance();
+                else if (match('*'))
+                    multilineComment();
                 else
                     addToken(SLASH);
                 break;
@@ -109,9 +131,9 @@ public class Scanner {
                 string();
                 break;
             default:
-                if(isDigit(c))
+                if (isDigit(c))
                     number();
-                else if(isAlpha(c))
+                else if (isAlpha(c))
                     identifier();
                 else
                     Lox.error(line, "Unexpected character");
@@ -170,6 +192,28 @@ public class Scanner {
     private boolean isDigit(char c) {
 
         return c >= '0' && c <= '9';
+
+    }
+
+    private void multilineComment() {
+
+        while(!(peek() == '*' && peekNext() == '/') && !isAtEnd()) {
+
+            if (peek() == '\n')
+                line++;
+            advance();
+
+        }
+
+        if(isAtEnd()) {
+
+            Lox.error(line, "Undetermined multiline comment.");
+            return;
+
+        }
+
+        advance();
+        advance();
 
     }
 
