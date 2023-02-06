@@ -12,6 +12,7 @@ abstract class Stmt {
         T visitExpressionStmt(Expression stmt);
         T visitPrintStmt(Print stmt);
         T visitVarStmt(Var stmt);
+        T visitBlockStmt(Block stmt);
 
     }
 
@@ -69,6 +70,25 @@ abstract class Stmt {
         <T> T accept(Visitor<T> visitor) {
 
             return visitor.visitVarStmt(this);
+
+        }
+
+    }
+
+    static class Block extends Stmt {
+
+        final List<Stmt> statements;
+
+        Block (List<Stmt> statements) {
+
+            this.statements = statements;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitBlockStmt(this);
 
         }
 

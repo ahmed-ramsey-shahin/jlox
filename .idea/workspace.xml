@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding support fot statements, global variables">
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,20 +50,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Lox">
-    <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lox.AstPrinter" />
-      <module name="jlox" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lox.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Lox (REPL)">
     <configuration name="GenerateAst" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tool.GenerateAst" />
       <module name="jlox" />
@@ -76,9 +65,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Lox (REPL)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="lox.Lox" />
       <module name="jlox" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lox (main.lox)" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="lox.Lox" />
+      <module name="jlox" />
+      <option name="PROGRAM_PARAMETERS" value="./main.lox" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lox.*" />
@@ -89,10 +86,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.GenerateAst" />
+      <item itemvalue="Application.Lox (REPL)" />
+      <item itemvalue="Application.Lox (main.lox)" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Lox" />
-        <item itemvalue="Application.AstPrinter" />
+        <item itemvalue="Application.Lox (main.lox)" />
       </list>
     </recent_temporary>
   </component>
@@ -106,7 +107,7 @@
       <updated>1675540595022</updated>
       <workItem from="1675540596078" duration="21424000" />
       <workItem from="1675649851436" duration="15169000" />
-      <workItem from="1675712153458" duration="5124000" />
+      <workItem from="1675712153458" duration="9131000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -171,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675668487827</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable.">
+      <created>1675717765680</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675717765680</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +195,7 @@
     <MESSAGE value="Adding an interpreter" />
     <MESSAGE value="1- Prohibiting division by zero.&#10;2- Allowing concatenation between string and numbers." />
     <MESSAGE value="Adding support fot statements, global variables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding support fot statements, global variables" />
+    <MESSAGE value="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable." />
   </component>
 </project>

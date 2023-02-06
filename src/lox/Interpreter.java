@@ -4,7 +4,15 @@ import java.util.List;
 
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
-    private final Environment environment = new Environment();
+    private Environment environment = new Environment();
+
+    @Override
+    public Void visitBlockStmt(Stmt.Block stmt) {
+
+        executeBlock(stmt.statements, new Environment(environment));
+        return null;
+
+    }
 
     @Override
     public Object visitAssignExpr(Expr.Assign expr) {
@@ -220,6 +228,29 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
         if(right != 0) return;
         throw new RuntimeError(operator, "Division by zero is prohibited. (عايز تخالف شرع ربنا يا ولد؟)");
+
+    }
+
+    private void executeBlock(List<Stmt> statements, Environment environment) {
+
+
+        Environment previousEnv = this.environment;
+
+        try {
+
+            this.environment = environment;
+
+            for(Stmt statement : statements) {
+
+                execute(statement);
+
+            }
+
+        } finally {
+
+            this.environment = previousEnv;
+
+        }
 
     }
 

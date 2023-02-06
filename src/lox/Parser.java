@@ -124,6 +124,7 @@ public class Parser {
         try {
 
             if(match(VAR)) return varDeclaration();
+            if(match(LEFT_BRACE)) return new Stmt.Block(block());
             return statement();
 
         } catch (ParseError error) {
@@ -132,6 +133,16 @@ public class Parser {
             return null;
 
         }
+
+    }
+
+    private List<Stmt> block() {
+
+        List<Stmt> statements = new ArrayList<>();
+        while (!check(RIGHT_BRACE) && !isAtEnd())
+            statements.add(declaration());
+        consume(RIGHT_BRACE, "Expected '}' after a block.");
+        return statements;
 
     }
 
