@@ -9,8 +9,9 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     @Override
     public Object visitAssignExpr(Expr.Assign expr) {
 
-        // TODO: Implement me
-        return null;
+        Object value = evaluate(expr.value);
+        environment.assign(expr.name, value);
+        return value;
 
     }
 
@@ -20,7 +21,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         Object value = null;
         if(stmt.initializer != null)
             value = evaluate(stmt.initializer);
-        environment.define(stmt.name.lexeme, value);
+        environment.define(stmt.name, value);
         return null;
 
     }
