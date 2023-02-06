@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jlox.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lox/Scanner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lox/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lox/TokenType.java" afterDir="false" />
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="1- Adding code to create binary, grouping, literal, and unary expressions, and implement a visitor design pattern associated with them.&#10;2- Implementing parser tree printer using the visitor pattern.">
+      <change afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +40,41 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Lox">
+    <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lox.AstPrinter" />
+      <module name="jlox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lox.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenerateAst" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tool.GenerateAst" />
+      <module name="jlox" />
+      <option name="PROGRAM_PARAMETERS" value="./src/lox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tool.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lox.Lox" />
       <module name="jlox" />
@@ -65,6 +91,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Lox" />
+        <item itemvalue="Application.AstPrinter" />
       </list>
     </recent_temporary>
   </component>
@@ -76,11 +103,56 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675540595022</updated>
-      <workItem from="1675540596078" duration="8045000" />
+      <workItem from="1675540596078" duration="21424000" />
+      <workItem from="1675649851436" duration="4693000" />
     </task>
+    <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
+      <created>1675549833383</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675549833383</updated>
+    </task>
+    <task id="LOCAL-00002" summary="adding /.idea/ to the .gitignore">
+      <created>1675550162982</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675550162982</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixed a bug in the scanToken function">
+      <created>1675550305636</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675550305636</updated>
+    </task>
+    <task id="LOCAL-00004" summary="adding support for multiline comment">
+      <created>1675554946000</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675554946000</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1- Adding code to create binary, grouping, literal, and unary expressions, and implement a visitor design pattern associated with them.&#10;2- Implementing parser tree printer using the visitor pattern.">
+      <created>1675569751003</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675569751003</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initializing and creating the Scanner" />
+    <MESSAGE value="adding /.idea/ to the .gitignore" />
+    <MESSAGE value="fixed a bug in the scanToken function" />
+    <MESSAGE value="adding support for multiline comment" />
+    <MESSAGE value="1- Adding code to create binary, grouping, literal, and unary expressions, and implement a visitor design pattern associated with them.&#10;2- Implementing parser tree printer using the visitor pattern." />
+    <option name="LAST_COMMIT_MESSAGE" value="1- Adding code to create binary, grouping, literal, and unary expressions, and implement a visitor design pattern associated with them.&#10;2- Implementing parser tree printer using the visitor pattern." />
   </component>
 </project>
