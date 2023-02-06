@@ -1,5 +1,6 @@
 package lox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static lox.TokenType.*;
@@ -104,17 +105,69 @@ public class Parser {
 
     }
 
-    Expr parse() {
+    List<Stmt> parse() {
+
+        List<Stmt> statements = new ArrayList<>();
+
+        while (!isAtEnd()) {
+
+            statements.add(declaration());
+
+        }
+
+        return statements;
+
+    }
+
+    private Stmt declaration() {
 
         try {
 
-            return expression();
+            if(match(VAR)) return varDeclaration();
+            return statement();
 
         } catch (ParseError error) {
 
+            synchronize();
             return null;
 
         }
+
+    }
+
+    private Stmt varDeclaration() {
+
+        Token name = consume(
+                IDENTIFIER, "Expected variable name.(بزمتك يا شيخ هعمل فاريبول من غير اسم كيف يعني؟)"
+        );
+        Expr initializer = null;
+        if(match(EQUAL))
+            initializer = expression();
+        consume(SEMICOLON, "Expected a ';' after variable declaration.(تاني ؟ تاني؟)");
+        return new Stmt.Var(name, initializer);
+
+    }
+
+    private Stmt statement() {
+
+        if(match(PRINT)) return printStatement();
+        return expressionStatement();
+
+    }
+
+    private Stmt printStatement() {
+
+        Expr value = expression();
+        consume(SEMICOLON, "Expected ';' after value.(هو لسه في حد بيعمل الغلطات دي يا منوب ؟)");
+        return new Stmt.Print(value);
+
+    }
+
+    private Stmt expressionStatement() {
+
+        Expr expr = expression();
+        consume(SEMICOLON, "Expected ';' after expression.(هو لسه في حد بيعمل الغلطات دي يا نوب ؟)");
+        return new Stmt.Expression(expr);
 
     }
 
@@ -208,6 +261,7 @@ public class Parser {
         if(match(TRUE)) return new Expr.Literal(true);
         if(match(NIL)) return new Expr.Literal(null);
         if(match(NUMBER, STRING)) return new Expr.Literal(previous().literal);
+        if(match(IDENTIFIER)) return new Expr.Variable(previous());
         if(match(LEFT_PAREN)) {
 
             Expr expr = expression();

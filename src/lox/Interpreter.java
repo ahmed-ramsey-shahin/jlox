@@ -1,6 +1,53 @@
 package lox;
 
-public class Interpreter implements Expr.Visitor<Object> {
+import java.util.List;
+
+public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
+
+    private final Environment environment = new Environment();
+
+    @Override
+    public Object visitAssignExpr(Expr.Assign expr) {
+
+        // TODO: Implement me
+        return null;
+
+    }
+
+    @Override
+    public Void visitVarStmt(Stmt.Var stmt) {
+
+        Object value = null;
+        if(stmt.initializer != null)
+            value = evaluate(stmt.initializer);
+        environment.define(stmt.name.lexeme, value);
+        return null;
+
+    }
+
+    @Override
+    public Object visitVariableExpr(Expr.Variable expr) {
+
+        return environment.get(expr.name);
+
+    }
+
+    @Override
+    public Void visitExpressionStmt(Stmt.Expression stmt) {
+
+        evaluate(stmt.expression);
+        return null;
+
+    }
+
+    @Override
+    public Void visitPrintStmt(Stmt.Print stmt) {
+
+        Object value = evaluate(stmt.expression);
+        System.out.println(stringify(value));
+        return null;
+
+    }
 
     @Override
     public Object visitBinaryExpr(Expr.Binary expr) {
@@ -91,18 +138,27 @@ public class Interpreter implements Expr.Visitor<Object> {
 
     }
 
-    void interpret(Expr expr) {
+    void interpret(List<Stmt> statements) {
 
         try {
 
-            Object value = evaluate(expr);
-            System.out.println(stringify(value));
+            for(Stmt statement : statements) {
+
+                execute(statement);
+
+            }
 
         } catch (RuntimeError error) {
 
             Lox.runtimeError(error);
 
         }
+
+    }
+
+    private void execute(Stmt statement) {
+
+        statement.accept(this);
 
     }
 

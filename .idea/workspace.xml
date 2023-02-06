@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding an interpreter">
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="1- Prohibiting division by zero.&#10;2- Allowing concatenation between string and numbers.">
+      <change afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/AstPrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +53,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Lox">
+  <component name="RunManager" selected="Application.GenerateAst">
     <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lox.AstPrinter" />
       <module name="jlox" />
@@ -103,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675540595022</updated>
       <workItem from="1675540596078" duration="21424000" />
-      <workItem from="1675649851436" duration="9395000" />
+      <workItem from="1675649851436" duration="14972000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -154,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675661279853</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1- Prohibiting division by zero.&#10;2- Allowing concatenation between string and numbers.">
+      <created>1675662940824</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675662940824</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +182,7 @@
     <MESSAGE value="1- Adding code to create binary, grouping, literal, and unary expressions, and implement a visitor design pattern associated with them.&#10;2- Implementing parser tree printer using the visitor pattern." />
     <MESSAGE value="Hooking up the parser" />
     <MESSAGE value="Adding an interpreter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding an interpreter" />
+    <MESSAGE value="1- Prohibiting division by zero.&#10;2- Allowing concatenation between string and numbers." />
+    <option name="LAST_COMMIT_MESSAGE" value="1- Prohibiting division by zero.&#10;2- Allowing concatenation between string and numbers." />
   </component>
 </project>
