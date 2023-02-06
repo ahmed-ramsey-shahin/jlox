@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Hooking up the parser">
-      <change afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lox/RuntimeError.java" afterDir="false" />
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding an interpreter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675540595022</updated>
       <workItem from="1675540596078" duration="21424000" />
-      <workItem from="1675649851436" duration="7707000" />
+      <workItem from="1675649851436" duration="9395000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -149,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675656741512</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Adding an interpreter">
+      <created>1675661279853</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675661279853</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +167,7 @@
     <MESSAGE value="adding support for multiline comment" />
     <MESSAGE value="1- Adding code to create binary, grouping, literal, and unary expressions, and implement a visitor design pattern associated with them.&#10;2- Implementing parser tree printer using the visitor pattern." />
     <MESSAGE value="Hooking up the parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hooking up the parser" />
+    <MESSAGE value="Adding an interpreter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding an interpreter" />
   </component>
 </project>

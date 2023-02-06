@@ -10,21 +10,48 @@ public class Interpreter implements Expr.Visitor<Object> {
 
         switch (expr.operator.type) {
 
-            case GREATER -> { checkNumberOperands(expr.operator, left, right); return (double) left > (double) right; }
-            case GREATER_EQUAL -> { checkNumberOperands(expr.operator, left, right); return (double) left >= (double) right; }
-            case LESS -> { checkNumberOperands(expr.operator, left, right); return (double) left < (double) right; }
-            case LESS_EQUAL -> { checkNumberOperands(expr.operator, left, right); return (double) left <= (double) right; }
-            case EQUAL_EQUAL -> { return isEqual(left, right); }
-            case BANG_EQUAL -> { return !isEqual(left, right); }
-            case MINUS -> { checkNumberOperands(expr.operator, left, right);  return (double) left - (double) right; }
-            case SLASH -> { checkNumberOperands(expr.operator, left, right); return (double) left / (double) right; }
-            case STAR -> { checkNumberOperands(expr.operator, left, right); return (double) left * (double) right; }
+            case GREATER -> {
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left > (double) right;
+            }
+            case GREATER_EQUAL -> {
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left >= (double) right;
+            }
+            case LESS -> {
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left < (double) right;
+            }
+            case LESS_EQUAL -> {
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left <= (double) right;
+            }
+            case MINUS -> {
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left - (double) right;
+            }
+            case SLASH -> {
+                checkNumberOperands(expr.operator, left, right);
+                checkDivisionByZero(expr.operator, (double) left, (double) right);
+                return (double) left / (double) right;
+            }
+            case STAR -> {
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left * (double) right;
+            }
             case PLUS -> {
                 if(left instanceof Double && right instanceof Double)
                     return (double) left + (double) right;
                 if(left instanceof String && right instanceof String)
-                    return (String) left + (String) right;
+                    return left + (String) right;
+                if(left instanceof Double)
+                    left = stringify(left);
+                if(right instanceof Double)
+                    right = stringify(right);
+                return left + (String) right;
             }
+            case EQUAL_EQUAL -> { return isEqual(left, right); }
+            case BANG_EQUAL -> { return !isEqual(left, right); }
 
         }
 
@@ -129,6 +156,13 @@ public class Interpreter implements Expr.Visitor<Object> {
 
         if(left instanceof Double && right instanceof Double) return;
         throw new RuntimeError(operator, "Operands must be a numbers.");
+
+    }
+
+    private void checkDivisionByZero(Token operator, double left, double right) {
+
+        if(right != 0) return;
+        throw new RuntimeError(operator, "Division by zero is prohibited. (عايز تخالف شرع ربنا يا ولد؟)");
 
     }
 
