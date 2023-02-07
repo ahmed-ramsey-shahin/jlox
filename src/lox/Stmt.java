@@ -16,6 +16,7 @@ abstract class Stmt {
         T visitIfStmt(If stmt);
         T visitWhileStmt(While stmt);
         T visitFunctionStmt(Function stmt);
+        T visitReturnStmt(Return stmt);
 
     }
 
@@ -159,6 +160,27 @@ abstract class Stmt {
         <T> T accept(Visitor<T> visitor) {
 
             return visitor.visitFunctionStmt(this);
+
+        }
+
+    }
+
+    static class Return extends Stmt {
+
+        final Token name;
+        final Expr initializer;
+
+        Return (Token name, Expr initializer) {
+
+            this.name = name;
+            this.initializer = initializer;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitReturnStmt(this);
 
         }
 

@@ -129,6 +129,15 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     @Override
+    public Void visitReturnStmt(Stmt.Return stmt) {
+
+        Object value = null;
+        if(stmt.initializer != null) value = evaluate(stmt.initializer);
+        throw new Return(value);
+
+    }
+
+    @Override
     public Void visitFunctionStmt(Stmt.Function stmt) {
 
         LoxFunction function = new LoxFunction(stmt);
