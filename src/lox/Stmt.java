@@ -14,6 +14,7 @@ abstract class Stmt {
         T visitVarStmt(Var stmt);
         T visitBlockStmt(Block stmt);
         T visitIfStmt(If stmt);
+        T visitWhileStmt(While stmt);
 
     }
 
@@ -113,6 +114,27 @@ abstract class Stmt {
         <T> T accept(Visitor<T> visitor) {
 
             return visitor.visitIfStmt(this);
+
+        }
+
+    }
+
+    static class While extends Stmt {
+
+        final Expr condition;
+        final Stmt body;
+
+        While (Expr condition, Stmt body) {
+
+            this.condition = condition;
+            this.body = body;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitWhileStmt(this);
 
         }
 

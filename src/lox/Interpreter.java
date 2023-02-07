@@ -7,6 +7,18 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     private Environment environment = new Environment();
 
     @Override
+    public Void visitWhileStmt(Stmt.While stmt) {
+
+        while (isTruthy(evaluate(stmt.condition))) {
+
+            execute(stmt.body);
+
+        }
+        return null;
+
+    }
+
+    @Override
     public Object visitLogicalExpr(Expr.Logical expr) {
 
         Object left = evaluate(expr.left);
@@ -118,7 +130,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
             }
             case SLASH -> {
                 checkNumberOperands(expr.operator, left, right);
-                checkDivisionByZero(expr.operator, (double) left, (double) right);
+                checkDivisionByZero(expr.operator, (double) right);
                 return (double) left / (double) right;
             }
             case STAR -> {
@@ -254,7 +266,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     }
 
-    private void checkDivisionByZero(Token operator, double left, double right) {
+    private void checkDivisionByZero(Token operator, double right) {
 
         if(right != 0) return;
         throw new RuntimeError(operator, "Division by zero is prohibited. (عايز تخالف شرع ربنا يا ولد؟)");

@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="1- Adding support for scope&#10;2- Adding support for blocks">
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="1- Adding support for Logical Looping (for, and while)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
@@ -107,7 +106,7 @@
       <updated>1675540595022</updated>
       <workItem from="1675540596078" duration="21424000" />
       <workItem from="1675649851436" duration="15169000" />
-      <workItem from="1675712153458" duration="16031000" />
+      <workItem from="1675712153458" duration="18564000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -186,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675722686395</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="1- Adding support for Logical Operators&#10;2- Adding support for Conditionals">
+      <created>1675730476160</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1675730476160</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +210,8 @@
     <MESSAGE value="Adding support fot statements, global variables" />
     <MESSAGE value="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable." />
     <MESSAGE value="1- Adding support for scope&#10;2- Adding support for blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="1- Adding support for scope&#10;2- Adding support for blocks" />
+    <MESSAGE value="1- Adding support for Logical Operators&#10;2- Adding support for Conditionals" />
+    <MESSAGE value="1- Adding support for Logical Looping (for, and while)" />
+    <option name="LAST_COMMIT_MESSAGE" value="1- Adding support for Logical Looping (for, and while)" />
   </component>
 </project>
