@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable.">
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="1- Adding support for scope&#10;2- Adding support for blocks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
@@ -50,7 +50,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Lox (REPL)">
+  <component name="RunManager" selected="Application.Lox (main.lox)">
     <configuration name="GenerateAst" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tool.GenerateAst" />
       <module name="jlox" />
@@ -107,7 +107,7 @@
       <updated>1675540595022</updated>
       <workItem from="1675540596078" duration="21424000" />
       <workItem from="1675649851436" duration="15169000" />
-      <workItem from="1675712153458" duration="9131000" />
+      <workItem from="1675712153458" duration="16031000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -179,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675717765680</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="1- Adding support for scope&#10;2- Adding support for blocks">
+      <created>1675722686395</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675722686395</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +203,7 @@
     <MESSAGE value="1- Prohibiting division by zero.&#10;2- Allowing concatenation between string and numbers." />
     <MESSAGE value="Adding support fot statements, global variables" />
     <MESSAGE value="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding support fot mutating variable's state.&#10;Throwing error when trying to redefine a pre-defined variable." />
+    <MESSAGE value="1- Adding support for scope&#10;2- Adding support for blocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="1- Adding support for scope&#10;2- Adding support for blocks" />
   </component>
 </project>
