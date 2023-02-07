@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding support for Logical Looping (for, and while)">
-      <change afterPath="$PROJECT_DIR$/src/lox/LoxCallable.java" afterDir="false" />
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="1- Adding support for function calls.&#10;2- Adding support for native functions (clock, fprit, fprintLine, fread).">
+      <change afterPath="$PROJECT_DIR$/src/lox/LoxFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -110,7 +109,8 @@
       <workItem from="1675540596078" duration="21424000" />
       <workItem from="1675649851436" duration="15169000" />
       <workItem from="1675712153458" duration="19095000" />
-      <workItem from="1675775163906" duration="6095000" />
+      <workItem from="1675775163906" duration="6269000" />
+      <workItem from="1675808791936" duration="2575000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -203,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675733166496</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="1- Adding support for function calls.&#10;2- Adding support for native functions (clock, fprit, fprintLine, fread).">
+      <created>1675785881309</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675785881309</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +230,7 @@
     <MESSAGE value="1- Adding support for scope&#10;2- Adding support for blocks" />
     <MESSAGE value="1- Adding support for Logical Operators&#10;2- Adding support for Conditionals" />
     <MESSAGE value="1- Adding support for Logical Looping (for, and while)" />
-    <option name="LAST_COMMIT_MESSAGE" value="1- Adding support for Logical Looping (for, and while)" />
+    <MESSAGE value="1- Adding support for function calls.&#10;2- Adding support for native functions (clock, fprit, fprintLine, fread)." />
+    <option name="LAST_COMMIT_MESSAGE" value="1- Adding support for function calls.&#10;2- Adding support for native functions (clock, fprit, fprintLine, fread)." />
   </component>
 </project>

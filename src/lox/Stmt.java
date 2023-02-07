@@ -15,6 +15,7 @@ abstract class Stmt {
         T visitBlockStmt(Block stmt);
         T visitIfStmt(If stmt);
         T visitWhileStmt(While stmt);
+        T visitFunctionStmt(Function stmt);
 
     }
 
@@ -135,6 +136,29 @@ abstract class Stmt {
         <T> T accept(Visitor<T> visitor) {
 
             return visitor.visitWhileStmt(this);
+
+        }
+
+    }
+
+    static class Function extends Stmt {
+
+        final Token name;
+        final List<Token> params;
+        final List<Stmt> body;
+
+        Function (Token name, List<Token> params, List<Stmt> body) {
+
+            this.name = name;
+            this.params = params;
+            this.body = body;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitFunctionStmt(this);
 
         }
 

@@ -125,6 +125,7 @@ public class Parser {
         try {
 
             if(match(VAR)) return varDeclaration();
+            if(match(FUN)) return function("function");
             if(match(LEFT_BRACE)) return new Stmt.Block(block());
             return statement();
 
@@ -134,6 +135,31 @@ public class Parser {
             return null;
 
         }
+
+    }
+
+    private Stmt.Function function(String kind) {
+
+        Token name = consume(IDENTIFIER, String.format("Expected %s name.", kind));
+        consume(LEFT_PAREN, String.format("Expected '(' after %s name.", kind));
+        List<Token> parameters = new ArrayList<>();
+
+        if(!check(RIGHT_PAREN)) {
+
+            do {
+
+                if(parameters.size() >= 255)
+                    error(peek(), "Can't have more than 255 parameters.");
+                parameters.add(consume(IDENTIFIER, "Expected parameter name."));
+
+            } while (match(COMMA));
+
+        }
+
+        consume(RIGHT_PAREN, "Expected ')' after the parameters list.");
+        consume(LEFT_BRACE, String.format("Expected before %s body.", kind));
+        List<Stmt> body = block();
+        return new Stmt.Function(name, parameters, body);
 
     }
 
