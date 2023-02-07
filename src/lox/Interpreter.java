@@ -1,10 +1,157 @@
 package lox;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
-    private Environment environment = new Environment();
+    private final Environment globals = new Environment();
+    private Environment environment = globals;
+
+    Interpreter() {
+
+        globals.define(new Token(TokenType.FUN, "clock", null, 1), new LoxCallable() {
+
+            @Override
+            public Object call(Interpreter interpreter, List<Object> arguments) {
+
+                return (double) System.currentTimeMillis() / 1000.0;
+
+            }
+
+            @Override
+            public int arity() {
+
+                return 0;
+
+            }
+
+            @Override
+            public String toString() {
+
+                return "<native fun>";
+
+            }
+
+        });
+
+        globals.define(new Token(TokenType.FUN, "read", null, 1), new LoxCallable() {
+
+            @Override
+            public Object call(Interpreter interpreter, List<Object> arguments) {
+
+                InputStreamReader input = new InputStreamReader(System.in);
+                BufferedReader reader = new BufferedReader(input);
+
+                try {
+
+                    return reader.readLine();
+
+                } catch (IOException err) {
+
+                    return null;
+
+                }
+
+            }
+
+            @Override
+            public int arity() {
+
+                return 0;
+
+            }
+
+            @Override
+            public String toString() {
+
+                return "<native fun>";
+
+            }
+
+        });
+
+        globals.define(new Token(TokenType.FUN, "fprint", null, 1), new LoxCallable() {
+
+            @Override
+            public Object call(Interpreter interpreter, List<Object> arguments) {
+
+                System.out.print(arguments.get(0));
+                return null;
+
+            }
+
+            @Override
+            public int arity() {
+
+                return 1;
+
+            }
+
+            @Override
+            public String toString() {
+
+                return "<native fun>";
+
+            }
+
+        });
+
+        globals.define(new Token(TokenType.FUN, "fprintLine", null, 1), new LoxCallable() {
+
+            @Override
+            public Object call(Interpreter interpreter, List<Object> arguments) {
+
+                System.out.println(arguments.get(0));
+                return null;
+
+            }
+
+            @Override
+            public int arity() {
+
+                return 1;
+
+            }
+
+            @Override
+            public String toString() {
+
+                return "<native fun>";
+
+            }
+
+        });
+
+    }
+
+    @Override
+    public Object visitCallExpr(Expr.Call expr) {
+
+        Object callee = evaluate(expr.callee);
+        List<Object> arguments = new ArrayList<>();
+        for (Expr argument : expr.arguments)
+            arguments.add(evaluate(argument));
+        if(!(callee instanceof LoxCallable function))
+            throw new RuntimeError(
+                    expr.paren,
+                    "Can't call anything but functions and classes"
+            );
+        if(arguments.size() != function.arity())
+            throw new RuntimeError(
+                    expr.paren,
+                    String.format(
+                            "Expected %d arguments but got %d.",
+                            function.arity(),
+                            arguments.size()
+                    )
+            );
+        return function.call(this, arguments);
+
+    }
 
     @Override
     public Void visitWhileStmt(Stmt.While stmt) {

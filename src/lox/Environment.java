@@ -44,7 +44,7 @@ public class Environment {
             return enclosing.get(name);
         throw new RuntimeError(
                 name,
-                String.format("Undefined variable '%s'.(اجيبه منين ده بقا انااا ؟)", name.lexeme)
+                String.format("Undefined variable '%s'.(اجيبه منين ده بجا انااا ؟)", name.lexeme)
         );
 
     }

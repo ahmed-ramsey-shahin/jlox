@@ -16,6 +16,7 @@ abstract class Expr {
         T visitVariableExpr(Variable expr);
         T visitAssignExpr(Assign expr);
         T visitLogicalExpr(Logical expr);
+        T visitCallExpr(Call expr);
 
     }
 
@@ -159,6 +160,29 @@ abstract class Expr {
         <T> T accept(Visitor<T> visitor) {
 
             return visitor.visitLogicalExpr(this);
+
+        }
+
+    }
+
+    static class Call extends Expr {
+
+        final Expr callee;
+        final Token paren;
+        final List<Expr> arguments;
+
+        Call (Expr callee, Token paren, List<Expr> arguments) {
+
+            this.callee = callee;
+            this.paren = paren;
+            this.arguments = arguments;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitCallExpr(this);
 
         }
 
