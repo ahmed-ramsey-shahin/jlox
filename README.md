@@ -28,7 +28,7 @@ while(i < 10) {
 ```
 fun power(a, b) {
   var result = 1;
-  for(var i = 1; i < b; i = i + 1) {
+  for(var i = 1; i <= b; i = i + 1) {
     result = result * a;
   }
   return result;
