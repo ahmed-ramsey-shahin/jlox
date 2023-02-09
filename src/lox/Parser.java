@@ -92,11 +92,15 @@ public class Parser {
 
             switch (peek().type) {
 
-                case CLASS, FUN, VAR, IF, WHILE, PRINT, FOR, RETURN -> {
-
+                case CLASS:
+                case FUN:
+                case VAR:
+                case IF:
+                case WHILE:
+                case PRINT:
+                case FOR:
+                case RETURN:
                     return;
-
-                }
 
             }
 
@@ -312,8 +316,9 @@ public class Parser {
                 Token name = ((Expr.Variable) expr).name;
                 return new Expr.Assign(name, value);
 
-            } else if(expr instanceof Expr.Get get) {
+            } else if(expr instanceof Expr.Get) {
 
+                Expr.Get get = (Expr.Get) expr;
                 return new Expr.Set(get.object, get.name, value);
 
             }

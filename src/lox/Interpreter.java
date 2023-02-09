@@ -156,11 +156,12 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         List<Object> arguments = new ArrayList<>();
         for (Expr argument : expr.arguments)
             arguments.add(evaluate(argument));
-        if(!(callee instanceof LoxCallable function))
+        if(!(callee instanceof LoxCallable))
             throw new RuntimeError(
                     expr.paren,
                     "Can't call anything but functions and classes"
             );
+        LoxCallable function = (LoxCallable) callee;
         if(arguments.size() != function.arity())
             throw new RuntimeError(
                     expr.paren,
@@ -280,36 +281,29 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
         switch (expr.operator.type) {
 
-            case GREATER -> {
+            case GREATER:
                 checkNumberOperands(expr.operator, left, right);
                 return (double) left > (double) right;
-            }
-            case GREATER_EQUAL -> {
+            case GREATER_EQUAL:
                 checkNumberOperands(expr.operator, left, right);
                 return (double) left >= (double) right;
-            }
-            case LESS -> {
+            case LESS:
                 checkNumberOperands(expr.operator, left, right);
                 return (double) left < (double) right;
-            }
-            case LESS_EQUAL -> {
+            case LESS_EQUAL:
                 checkNumberOperands(expr.operator, left, right);
                 return (double) left <= (double) right;
-            }
-            case MINUS -> {
+            case MINUS:
                 checkNumberOperands(expr.operator, left, right);
                 return (double) left - (double) right;
-            }
-            case SLASH -> {
+            case SLASH:
                 checkNumberOperands(expr.operator, left, right);
                 checkDivisionByZero(expr.operator, (double) right);
                 return (double) left / (double) right;
-            }
-            case STAR -> {
+            case STAR:
                 checkNumberOperands(expr.operator, left, right);
                 return (double) left * (double) right;
-            }
-            case PLUS -> {
+            case PLUS:
                 if(left instanceof Double && right instanceof Double)
                     return (double) left + (double) right;
                 if(left instanceof String && right instanceof String)
@@ -319,9 +313,10 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
                 if(right instanceof Double)
                     right = stringify(right);
                 return left + (String) right;
-            }
-            case EQUAL_EQUAL -> { return isEqual(left, right); }
-            case BANG_EQUAL -> { return !isEqual(left, right); }
+            case EQUAL_EQUAL:
+                return isEqual(left, right);
+            case BANG_EQUAL:
+                return !isEqual(left, right);
 
         }
 
@@ -351,8 +346,11 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
         switch (expr.operator.type) {
 
-            case MINUS -> { checkNumberOperand(expr.operator, right); return -(double)right; }
-            case BANG -> { return !isTruthy(right); }
+            case MINUS:
+                checkNumberOperand(expr.operator, right);
+                return -(double)right;
+            case BANG:
+                return !isTruthy(right);
 
         }
 

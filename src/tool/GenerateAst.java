@@ -52,7 +52,7 @@ public class GenerateAst {
 
         // Define the base class
         String path = outputDir + "/" + baseName + ".java";
-        PrintWriter writer = new PrintWriter(path, StandardCharsets.UTF_8);
+        PrintWriter writer = new PrintWriter(path, "UTF-8");
         writer.println("// This code is automatically generated using JAVA");
         writer.println("package lox;");
         writer.println();
