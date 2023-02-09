@@ -126,6 +126,7 @@ public class Parser {
 
             if(match(VAR)) return varDeclaration();
             if(match(FUN)) return function("function");
+            if(match(CLASS)) return classDeclaration();
             if(match(LEFT_BRACE)) return new Stmt.Block(block());
             return statement();
 
@@ -311,6 +312,10 @@ public class Parser {
                 Token name = ((Expr.Variable) expr).name;
                 return new Expr.Assign(name, value);
 
+            } else if(expr instanceof Expr.Get get) {
+
+                return new Expr.Set(get.object, get.name, value);
+
             }
 
             throw error(equals, "Invalid assignment target.");
@@ -439,7 +444,12 @@ public class Parser {
 
             if(match(LEFT_PAREN))
                 expr = finishCall(expr);
-            else
+            else if(match(DOT)) {
+
+                Token name = consume(IDENTIFIER, "Expected property name after '.'.");
+                expr = new Expr.Get(expr, name);
+
+            } else
                 break;
 
         }
@@ -476,6 +486,7 @@ public class Parser {
         if(match(NIL)) return new Expr.Literal(null);
         if(match(NUMBER, STRING)) return new Expr.Literal(previous().literal);
         if(match(IDENTIFIER)) return new Expr.Variable(previous());
+        if(match(THIS)) return new Expr.This(previous());
         if(match(LEFT_PAREN)) {
 
             Expr expr = expression();
@@ -485,6 +496,21 @@ public class Parser {
         }
 
         throw error(peek(), "Expected expression.");
+
+    }
+
+    private Stmt classDeclaration() {
+
+        Token name = consume(
+                IDENTIFIER,
+                "Expected a class name."
+        );
+        consume(LEFT_BRACE, "Expected '{' before class body.");
+        List<Stmt.Function> methods = new ArrayList<>();
+        while (!check(RIGHT_BRACE) && !isAtEnd())
+            methods.add(function("method"));
+        consume(RIGHT_BRACE, "Expected '}' after class body.");
+        return new Stmt.Class(name, methods);
 
     }
 

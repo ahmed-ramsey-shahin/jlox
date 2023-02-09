@@ -17,6 +17,9 @@ abstract class Expr {
         T visitAssignExpr(Assign expr);
         T visitLogicalExpr(Logical expr);
         T visitCallExpr(Call expr);
+        T visitGetExpr(Get expr);
+        T visitSetExpr(Set expr);
+        T visitThisExpr(This expr);
 
     }
 
@@ -183,6 +186,69 @@ abstract class Expr {
         <T> T accept(Visitor<T> visitor) {
 
             return visitor.visitCallExpr(this);
+
+        }
+
+    }
+
+    static class Get extends Expr {
+
+        final Expr object;
+        final Token name;
+
+        Get (Expr object, Token name) {
+
+            this.object = object;
+            this.name = name;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitGetExpr(this);
+
+        }
+
+    }
+
+    static class Set extends Expr {
+
+        final Expr object;
+        final Token name;
+        final Expr value;
+
+        Set (Expr object, Token name, Expr value) {
+
+            this.object = object;
+            this.name = name;
+            this.value = value;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitSetExpr(this);
+
+        }
+
+    }
+
+    static class This extends Expr {
+
+        final Token keyword;
+
+        This (Token keyword) {
+
+            this.keyword = keyword;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitThisExpr(this);
 
         }
 
