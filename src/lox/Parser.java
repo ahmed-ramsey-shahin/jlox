@@ -494,6 +494,14 @@ public class Parser {
             return new Expr.Grouping(expr);
 
         }
+        if(match(SUPER)) {
+
+            Token keyword = previous();
+            consume(DOT, "Expected '.' after super.");
+            Token method = consume(IDENTIFIER, "Expected superclass method name.");
+            return new Expr.Super(keyword, method);
+
+        }
 
         throw error(peek(), "Expected expression.");
 
@@ -505,12 +513,21 @@ public class Parser {
                 IDENTIFIER,
                 "Expected a class name."
         );
+        Expr.Variable superclass = null;
+
+        if(match(LESS)) {
+
+            consume(IDENTIFIER, "Expected superclass name. (عتجولي مين ابوك يا كلب؟)");
+            superclass = new Expr.Variable(previous());
+
+        }
+
         consume(LEFT_BRACE, "Expected '{' before class body.");
         List<Stmt.Function> methods = new ArrayList<>();
         while (!check(RIGHT_BRACE) && !isAtEnd())
             methods.add(function("method"));
         consume(RIGHT_BRACE, "Expected '}' after class body.");
-        return new Stmt.Class(name, methods);
+        return new Stmt.Class(name, superclass, methods);
 
     }
 

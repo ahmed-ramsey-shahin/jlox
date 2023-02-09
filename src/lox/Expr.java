@@ -20,6 +20,7 @@ abstract class Expr {
         T visitGetExpr(Get expr);
         T visitSetExpr(Set expr);
         T visitThisExpr(This expr);
+        T visitSuperExpr(Super expr);
 
     }
 
@@ -249,6 +250,27 @@ abstract class Expr {
         <T> T accept(Visitor<T> visitor) {
 
             return visitor.visitThisExpr(this);
+
+        }
+
+    }
+
+    static class Super extends Expr {
+
+        final Token keyword;
+        final Token method;
+
+        Super (Token keyword, Token method) {
+
+            this.keyword = keyword;
+            this.method = method;
+
+        }
+
+        @Override
+        <T> T accept(Visitor<T> visitor) {
+
+            return visitor.visitSuperExpr(this);
 
         }
 
