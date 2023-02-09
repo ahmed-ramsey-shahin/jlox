@@ -1,4 +1,9 @@
 # Lox is a dynamically typed language (just for training purposes), these are some examples :)
+## To run the interpreter on a file called "main.lox" for example use the following command
+```
+java -jar jlox.jar /path/to/file/main.lox
+```
+
 ## Example on variables
 ```
 var x = 12;
