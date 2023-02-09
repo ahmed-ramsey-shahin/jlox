@@ -20,19 +20,9 @@ public class Environment {
 
     }
 
-    void define(Token name, Object value) {
+    void define(String name, Object value) {
 
-        if(!values.containsKey(name.lexeme)) {
-
-            values.put(name.lexeme, value);
-            return;
-
-        }
-
-        throw new RuntimeError(
-                name,
-                String.format("Variable '%s' is already defined.(شوفت الفاريبول ده فين جبل اكده؟)", name.lexeme)
-        );
+        values.put(name, value);
 
     }
 
@@ -69,6 +59,33 @@ public class Environment {
                 name,
                 String.format("Undefined variable '%s'. (يعني معتجولش الفاريبول صوح؟)", name.lexeme)
         );
+
+    }
+
+    Object getAt(int distance, String name) {
+
+        return ancestor(distance).values.get(name);
+
+    }
+
+    void assignAt(int distance, Token name, Object value) {
+
+        ancestor(distance).values.put(name.lexeme, value);
+
+    }
+
+    private Environment ancestor(int distance) {
+
+        Environment environment = this;
+
+        for(int i = 0; i < distance; i++) {
+
+            assert environment != null;
+            environment = environment.enclosing;
+
+        }
+
+        return environment;
 
     }
 

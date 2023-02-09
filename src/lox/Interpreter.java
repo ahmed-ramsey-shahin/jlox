@@ -4,16 +4,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
     final Environment globals = new Environment();
     private Environment environment = globals;
+    private final Map<Expr, Integer> locals = new HashMap<>();
 
     Interpreter() {
 
-        globals.define(new Token(TokenType.FUN, "clock", null, 1), new LoxCallable() {
+        globals.define("clock", new LoxCallable() {
 
             @Override
             public Object call(Interpreter interpreter, List<Object> arguments) {
@@ -38,7 +41,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
         });
 
-        globals.define(new Token(TokenType.FUN, "read", null, 1), new LoxCallable() {
+        globals.define("read", new LoxCallable() {
 
             @Override
             public Object call(Interpreter interpreter, List<Object> arguments) {
@@ -74,7 +77,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
         });
 
-        globals.define(new Token(TokenType.FUN, "fprint", null, 1), new LoxCallable() {
+        globals.define("printF", new LoxCallable() {
 
             @Override
             public Object call(Interpreter interpreter, List<Object> arguments) {
@@ -100,7 +103,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
         });
 
-        globals.define(new Token(TokenType.FUN, "fprintLine", null, 1), new LoxCallable() {
+        globals.define("printFLine", new LoxCallable() {
 
             @Override
             public Object call(Interpreter interpreter, List<Object> arguments) {
@@ -141,7 +144,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     public Void visitFunctionStmt(Stmt.Function stmt) {
 
         LoxFunction function = new LoxFunction(stmt, environment);
-        environment.define(stmt.name, function);
+        environment.define(stmt.name.lexeme, function);
         return null;
 
     }
@@ -225,7 +228,11 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     public Object visitAssignExpr(Expr.Assign expr) {
 
         Object value = evaluate(expr.value);
-        environment.assign(expr.name, value);
+        Integer distance = locals.get(expr);
+        if(distance != null)
+            environment.assignAt(distance, expr.name, value);
+        else
+            globals.assign(expr.name, value);
         return value;
 
     }
@@ -236,7 +243,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
         Object value = null;
         if(stmt.initializer != null)
             value = evaluate(stmt.initializer);
-        environment.define(stmt.name, value);
+        environment.define(stmt.name.lexeme, value);
         return null;
 
     }
@@ -244,7 +251,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     @Override
     public Object visitVariableExpr(Expr.Variable expr) {
 
-        return environment.get(expr.name);
+        return lookUpVariable(expr.name, expr);
 
     }
 
@@ -458,6 +465,22 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
             this.environment = previousEnv;
 
         }
+
+    }
+
+    void resolve(Expr expr, int depth) {
+
+        locals.put(expr, depth);
+
+    }
+
+    private Object lookUpVariable(Token name, Expr expr) {
+
+        Integer distance = locals.get(expr);
+        if(distance != null)
+            return environment.getAt(distance, name.lexeme);
+        else
+            return globals.get(name);
 
     }
 

@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding support for return">
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Fixing a little teeny tiny bug">
+      <change afterPath="$PROJECT_DIR$/src/lox/FunctionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lox/Resolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/LoxFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/LoxFunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,9 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -107,7 +111,8 @@
       <workItem from="1675649851436" duration="15169000" />
       <workItem from="1675712153458" duration="19095000" />
       <workItem from="1675775163906" duration="6269000" />
-      <workItem from="1675808791936" duration="4992000" />
+      <workItem from="1675808791936" duration="5774000" />
+      <workItem from="1675903065477" duration="6191000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -221,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675813562221</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fixing a little teeny tiny bug">
+      <created>1675814453084</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1675814453084</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +256,7 @@
     <MESSAGE value="1- Adding support for function calls.&#10;2- Adding support for native functions (clock, fprit, fprintLine, fread)." />
     <MESSAGE value="Adding support defining functions." />
     <MESSAGE value="Adding support for return" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding support for return" />
+    <MESSAGE value="Fixing a little teeny tiny bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing a little teeny tiny bug" />
   </component>
 </project>
