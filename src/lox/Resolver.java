@@ -100,7 +100,7 @@ public class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     @Override
     public Void visitReturnStmt(Stmt.Return stmt) {
 
-        if(currentFunction == FunctionType.FUNCTION)
+        if(currentFunction == FunctionType.NONE)
             Lox.error(
                     stmt.name,
                     "Can't return from top-level code. (كيف عنعمل ريتورن من الفوكن فاكنشن دي)"

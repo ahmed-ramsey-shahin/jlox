@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding support for oop. :)">
+    <list default="true" id="866d80e3-ce0b-4158-9a90-429d65885e66" name="Changes" comment="Adding support for inheritance, and super reserved keyword">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/ClassType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/LoxClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/LoxClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Resolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Resolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +107,8 @@
       <workItem from="1675712153458" duration="19095000" />
       <workItem from="1675775163906" duration="6269000" />
       <workItem from="1675808791936" duration="5774000" />
-      <workItem from="1675903065477" duration="16564000" />
+      <workItem from="1675903065477" duration="18664000" />
+      <workItem from="1675950554102" duration="1553000" />
     </task>
     <task id="LOCAL-00001" summary="Initializing and creating the Scanner">
       <created>1675549833383</created>
@@ -249,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675917382877</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Adding support for inheritance, and super reserved keyword">
+      <created>1675920399435</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1675920399435</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +276,7 @@
     <MESSAGE value="Fixing a little teeny tiny bug" />
     <MESSAGE value="Fixing a black hole (bug)" />
     <MESSAGE value="Adding support for oop. :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding support for oop. :)" />
+    <MESSAGE value="Adding support for inheritance, and super reserved keyword" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding support for inheritance, and super reserved keyword" />
   </component>
 </project>
